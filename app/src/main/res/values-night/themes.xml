@@ -1,0 +1,18 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.MyApplication" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your dark theme here. -->
+        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+    </style>
+
+
+    <style name="Theme.MyApplication" parent="Base.Theme.MyApplication" />
+
+    <style name="Widget.AppTheme.MaterialDatePicker" parent="ThemeOverlay.Material3.MaterialCalendar">
+        <item name="materialCalendarHeaderToggleButton">@style/Widget.AppTheme.MaterialCalendar.HeaderToggleButton</item>
+    </style>
+
+    <style name="Widget.AppTheme.MaterialCalendar.HeaderToggleButton" parent="Widget.Material3.MaterialCalendar.HeaderToggleButton">
+        <item name="android:visibility">gone</item>
+    </style>
+</resources>

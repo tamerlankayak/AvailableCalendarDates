@@ -1,0 +1,10 @@
+<!-- res/values/styles.xml -->
+<resources>
+    <style name="HighlightedDateText">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="DefaultDateText">
+        <!-- Define the default text color here -->
+    </style>
+</resources>
