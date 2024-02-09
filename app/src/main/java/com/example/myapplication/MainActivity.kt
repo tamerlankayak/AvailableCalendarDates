@@ -61,7 +61,6 @@ class MainActivity : AppCompatActivity() {
         materialDatePickerBuilder.setCalendarConstraints(constraintsBuilder.build())
 
         var materialDatePicker = materialDatePickerBuilder.build()
-        // Hide the toggle edit icon (workaround)
 
         materialDatePicker.addOnPositiveButtonClickListener(
             MaterialPickerOnPositiveButtonClickListener { selection ->
