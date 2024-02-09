@@ -113,7 +113,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
+    //set language
     fun setLocale(context: Context, languageCode: String) {
         val locale = Locale(languageCode)
         Locale.setDefault(locale)
