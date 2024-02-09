@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity() {
     private fun showCalendar() {
         val specialDates = listOf(
             CalendarDay(2024, Calendar.JANUARY, 8),
+            CalendarDay(2024, Calendar.FEBRUARY, 7),
             CalendarDay(2024, Calendar.FEBRUARY, 14),
             CalendarDay(2024, Calendar.FEBRUARY, 20),
             CalendarDay(2024, Calendar.MARCH, 20),
@@ -43,15 +44,21 @@ class MainActivity : AppCompatActivity() {
             CalendarDay(2024, Calendar.MARCH, 11)
             // Add more special dates as needed
         )
-        //setLocale(this, "az")
+        setLocale(this, "az")
         val materialDatePickerBuilder = MaterialDatePicker.Builder.datePicker().setTheme(R.style.Widget_AppTheme_MaterialDatePicker)
         val constraintsBuilder = CalendarConstraints.Builder()
+
+        val currentDate = Calendar.getInstance()
+
+        // Set the minimum date to the current date to disable selecting past dates
+        constraintsBuilder.setStart(currentDate.timeInMillis)
+
+        materialDatePickerBuilder.setCalendarConstraints(constraintsBuilder.build())
         constraintsBuilder.setValidator(SpecialDateValidator(specialDates))
 
         materialDatePickerBuilder.setCalendarConstraints(constraintsBuilder.build())
 
         var materialDatePicker = materialDatePickerBuilder.build()
-
         // Hide the toggle edit icon (workaround)
 
         materialDatePicker.addOnPositiveButtonClickListener(

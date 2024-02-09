@@ -7,16 +7,6 @@
 
     <style name="Theme.MyApplication" parent="Base.Theme.MyApplication" />
 
-    <style name="Widget.AppTheme.MaterialDatePicker" parent="ThemeOverlay.Material3.MaterialCalendar">
-        <item name="materialCalendarHeaderToggleButton">@style/Widget.AppTheme.MaterialCalendar.HeaderToggleButton</item>
-        <item name="colorOnPrimary">@android:color/holo_red_light</item>
-        <item name="colorPrimary">@android:color/holo_orange_dark</item>
-    </style>
 
-    <style name="Widget.AppTheme.MaterialCalendar.HeaderToggleButton" parent="Widget.Material3.MaterialCalendar.HeaderToggleButton">
-        <item name="android:visibility">gone</item>
-        <item name="colorOnPrimary">@android:color/holo_red_light</item>
-        <item name="colorPrimary">@android:color/holo_orange_dark</item>
-    </style>
 </resources>
 
