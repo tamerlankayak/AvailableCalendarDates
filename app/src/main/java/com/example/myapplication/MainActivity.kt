@@ -11,6 +11,7 @@ import com.example.myapplication.databinding.ActivityMainBinding
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener
+import java.text.SimpleDateFormat
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -32,16 +33,17 @@ class MainActivity : AppCompatActivity() {
 
     private fun showCalendar() {
         val specialDates = listOf(
-            CalendarDay(2024, Calendar.JANUARY, 8),
-            CalendarDay(2024, Calendar.FEBRUARY, 7),
-            CalendarDay(2024, Calendar.FEBRUARY, 14),
-            CalendarDay(2024, Calendar.FEBRUARY, 20),
-            CalendarDay(2024, Calendar.MARCH, 20),
-            CalendarDay(2024, Calendar.MARCH, 3),
-            CalendarDay(2024, Calendar.MARCH, 4),
-            CalendarDay(2024, Calendar.MARCH, 5),
-            CalendarDay(2024, Calendar.MARCH, 7),
-            CalendarDay(2024, Calendar.MARCH, 11)
+            "2024-01-08",
+            "2024-02-07",
+            "2024-02-14",
+            "2024-02-20",
+            "2024-03-20",
+            "2024-03-03",
+            "2024-03-04",
+            "2024-03-05",
+            "2024-03-07",
+            "2024-07-12",
+            "2024-03-11"
             // Add more special dates as needed
         )
         setLocale(this, "az")
@@ -63,14 +65,22 @@ class MainActivity : AppCompatActivity() {
 
         materialDatePicker.addOnPositiveButtonClickListener(
             MaterialPickerOnPositiveButtonClickListener { selection ->
+                // Convert the selected date to a readable format
+                val calendar = Calendar.getInstance()
+                calendar.timeInMillis = selection
+
+                val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                val formattedDate = simpleDateFormat.format(calendar.time)
+
                 // Handle date selection
-                Toast.makeText(this, selection.toString(), Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Selected Date: $formattedDate", Toast.LENGTH_SHORT).show()
             })
+
 
         materialDatePicker.show(supportFragmentManager, "MaterialDatePicker")
     }
 
-    private class SpecialDateValidator(private val specialDates: List<CalendarDay>) :
+    private class SpecialDateValidator(private val specialDates: List<String>) :
         CalendarConstraints.DateValidator {
 
         constructor(parcel: Parcel) : this(emptyList())
@@ -80,11 +90,7 @@ class MainActivity : AppCompatActivity() {
             val cal = Calendar.getInstance()
             cal.timeInMillis = date
 
-            val selectedDate = CalendarDay(
-                cal.get(Calendar.YEAR),
-                cal.get(Calendar.MONTH),
-                cal.get(Calendar.DAY_OF_MONTH)
-            )
+            val selectedDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(cal.time)
 
             return specialDates.contains(selectedDate)
         }
@@ -117,9 +123,6 @@ class MainActivity : AppCompatActivity() {
         config.setLocale(locale)
         context.resources.updateConfiguration(config, context.resources.displayMetrics)
     }
-
-    data class CalendarDay(val year: Int, val month: Int, val day: Int)
-
 
 
 }
