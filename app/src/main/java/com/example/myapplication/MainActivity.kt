@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
+    //example available dates
     private fun showCalendar() {
         val specialDates = listOf(
             "2024-01-08",
